@@ -12,24 +12,22 @@ router.get('/test', (req, res)=>{
 
     }
     res.json(data);
-
-    console.log('hello world');
 });
 
 
-router.get('/statistics', (req, res)=>{
+// router.get('/statistics', (req, res)=>{
 
-    const data = {
+//     const data = {
 
-        "IP": "123",
-        "Color": "white",
-        "Seconds": "23"
+//         "IP": "123",
+//         "Color": "white",
+//         "Seconds": "23"
 
-    }
-    res.json(data);
+//     }
+//     res.json(data);
 
-    console.log('hello world');
-});
+//     console.log('hello world');
+// });
 
 
 
