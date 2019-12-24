@@ -12,10 +12,10 @@ $(document).ready(function () {
     newUser = null;
     ipUser = null;
     $.getJSON("https://api.ipify.org?format=json",
-    function (data) {
+        function (data) {
 
-       ipUser= data.ip;
-    })
+            ipUser = data.ip;
+        })
     boton.click(function () {
 
         if (statePage == true) {
@@ -24,6 +24,7 @@ $(document).ready(function () {
             asignColor = setColor(initialCount);
             console.log(asignColor);
             clicks++;
+            traerPersonas();
             // newUser = createNewStatistics(ipUser, initialCount+1, asignColor);
             // storeUser(newUser);
 
@@ -94,20 +95,20 @@ function createNewStatistics(id, time, color) {
 
 
 
-function storeUser(user) {
+// function storeUser(user) {
 
-    xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = manejadorRespuesta2;
-    var url = "http://localhost:3000/agregar";
-    xhr.open('POST', url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    var body = { 'collection': 'usuarios', 'objet': user };
-    xhr.send(JSON.stringify(body));
+//     xhr = new XMLHttpRequest();
+//     xhr.onreadystatechange = manejadorRespuesta2;
+//     var url = "http://localhost:3000/agregar";
+//     xhr.open('POST', url, true);
+//     xhr.setRequestHeader("Content-Type", "application/json");
+//     var body = { 'collection': 'usuarios', 'objet': user };
+//     xhr.send(JSON.stringify(body));
 
-  }
+// }
 
 
-  function manejadorRespuesta2() {
+function manejadorRespuesta2() {
 
     if (xhr.readyState == 4) {
 
@@ -118,3 +119,23 @@ function storeUser(user) {
         }
     }
 }
+
+function manejadorRespuesta() {
+
+    if (xhr.readyState == 4) {
+
+        if (xhr.status == 200) {
+            var arrayPersonas = JSON.parse(xhr.responseText);
+
+            lista = arrayPersonas.data;
+
+            console.log(lista);
+            // armarTabla(lista);
+
+        }
+    }
+
+
+}
+
+
